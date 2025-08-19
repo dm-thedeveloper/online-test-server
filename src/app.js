@@ -11,7 +11,7 @@ app.use(express.static("public"));
 
 app.use(
   cors({
-    // origin: process.env.CLIENT_ORIGIN || "http://localhost:5173", // frontend URL
+    // origin:"http://localhost:5173", // frontend URL
     origin: "https://online-test-xi.vercel.app", // frontend URL
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true, // if you're sending cookies/auth

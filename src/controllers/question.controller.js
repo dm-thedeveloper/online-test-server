@@ -42,3 +42,31 @@ export const createQuestion = async (req, res) => {
     return res.status(response.statuscode).json(response);
   }
 };
+
+
+// ✅ Controller to get all questions
+
+export const getAllQuestions = async (req, res) => {
+  
+  try {
+    const questions = await Question.find().sort({ createdAt: -1 });
+
+    const response = new APIREsponse(
+      "All questions fetched successfully",
+      questions,
+      200
+    );
+
+    return res.status(response.statuscode).json(response);
+  } catch (error) {
+    console.error("Error fetching questions:", error.message);
+
+    const response = new APIREsponse(
+      "Failed to fetch questions",
+      { error: error.message },
+      500
+    );
+
+    return res.status(response.statuscode).json(response);
+  }
+};
